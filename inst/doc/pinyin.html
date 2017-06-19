@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Peng Zhao pzhao@pzhao.net" />
+
+<meta name="date" content="2017-06-19" />
+
+<title>pinyin</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">pinyin</h1>
+<h3 class="subtitle"><em>How to use the R package pinyin</em></h3>
+<h4 class="author"><em>Peng Zhao <a href="mailto:pzhao@pzhao.net">pzhao@pzhao.net</a></em></h4>
+<h4 class="date"><em>2017-06-19</em></h4>
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This is an R package for converting Chinese characters into pinyin. An brief introduction to pinyin can be found in <a href="https://en.wikipedia.org/wiki/Pinyin">Wikipedia</a>:</p>
+<blockquote>
+<p>Pinyin, or Hànyǔ Pīnyīn, is the official romanization system for Standard Chinese in mainland China, Malaysia, Singapore, and Taiwan. It is often used to teach Standard Chinese, which is normally written using Chinese characters. The system includes four diacritics denoting tones. Pinyin without tone marks is used to spell Chinese names and words in languages written with the Latin alphabet, and also in certain computer input methods to enter Chinese characters.</p>
+<p>The pinyin system was developed in the 1950s by many linguists, including Zhou Youguang, based on earlier forms of romanization of Chinese. It was published by the Chinese government in 1958 and revised several times. The International Organization for Standardization (ISO) adopted pinyin as an international standard in 1982, followed by the United Nations in 1986. The system was adopted as the official standard in Taiwan in 2009, where it is used for romanization alone (in part to make areas more English-friendly) rather than for educational and computer-input purposes.</p>
+</blockquote>
+<p>Since this package deals with Chinese characters, it is presumed that the users speak Chinese more or less. Therefore I wrote the instruction in Chinese. In case that some uses do not speak Chinese and want to use this package as well, please feel free to contact me via email, although the R codes in this document are self-explanary.</p>
+<p>这个 R 语言包粗暴地用拼音取名为 <a href="https://github.com/pzhaonet/pinyin/">pinyin</a>，作用是把汉字转换成拼音。</p>
+</div>
+<div id="installation--an-zhuan-fan-fa" class="section level2">
+<h2>Installation 安装方法 [ān zhuānɡ fānɡ fǎ]</h2>
+<p>pinyin包可以从CRAN安装：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">'pinyin'</span>)</code></pre></div>
+<p>也可以从 GitHub 安装最新测试版：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;pzhaonet/pinyin&quot;</span>)</code></pre></div>
+<p>安装时可能会出现一些关于 locale 的警告，净吓唬人，无视。</p>
+</div>
+<div id="funtions--han-shu" class="section level2">
+<h2>Funtions 函数 [hán shù]</h2>
+<p>函数的用法当然可以看帮助信息就行了。可惜帮助信息里好像没法写中文，而一个处理中文的包的帮助信息和示例却写不了中文，十分遗憾。好在这里可以用中文解释一下。</p>
+<p>pinyin 1.0.0版包含4个函数.<code>pinyin()</code>是主函数，可以把一个带汉字的字符串转换成拼音。可以选择:</p>
+<ul>
+<li>转换成标准的全拼 (默认 <code>method = 'quanpin'</code>)，或</li>
+<li>以数字表示声调 (<code>method = 'tone'</code>) , 或</li>
+<li>不含声调(<code>method = 'toneless'</code>),</li>
+<li>也可以选择仅保留每个字的首字母(<code>only_first_letter = TRUE</code>),</li>
+<li>可以自定义相邻两字拼音的分隔符号(<code>sep = '_'</code>),</li>
+<li>如果汉字字符串里边包含非汉字字符，可以选择将这些字符保留原样(<code>nonezh_replace = NULL</code>)还是转换成指定字符(如<code>nonezh_replace = '-'</code>)。</li>
+</ul>
+<p>其他3个函数，其实是 <code>pinyin()</code> 的延伸和示例：</p>
+<ul>
+<li><code>file.rename2py()</code>用来对文件重命名，将文件名里的汉字转换成拼音。</li>
+<li><code>file2py()</code> 用来将指定文件夹里的一个或多个文本文件里的汉字全部转换成拼音。</li>
+<li><code>bookdown2py()</code>是专门为 bookdown 包服务的，作用是为章节的中文标题自动添加个对应的拼音ID <code>{#biaotipinyin}</code>，避免在生成网页文件时文件名里出现一大堆乱码，并且解决<a href="https://disqus.com/home/discussion/yihui/_yihui_xie_679/#comment-3175332429">标题里中英文混合的问题</a>。— 当然这事儿手动完全可以处理，只是手动处理的过程毫无乐趣可言罢了。</li>
+</ul>
+</div>
+<div id="examples--shi-li" class="section level2">
+<h2>Examples 示例 [shì lì]</h2>
+<p>以参数的默认值进行转换：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">'pinyin'</span>)
+<span class="kw">pinyin</span>(<span class="st">'羌笛何须怨杨柳春风不度玉门关'</span>)</code></pre></div>
+<pre><code>## [1] &quot;qiānɡ_dí_hé_xū_yuàn_yánɡ_liǔ_chūn_fēnɡ_bú_dù_yù_mén_ɡuān&quot;</code></pre>
+<p>更改相邻拼音之间的分隔符号：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pinyin</span>(<span class="st">'羌笛何须怨杨柳春风不度玉门关'</span>, <span class="dt">sep =</span> <span class="st">' '</span>)</code></pre></div>
+<pre><code>## [1] &quot;qiānɡ dí hé xū yuàn yánɡ liǔ chūn fēnɡ bú dù yù mén ɡuān&quot;</code></pre>
+<p>用数字表示声调：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pinyin</span>(<span class="st">'羌笛何须怨杨柳春风不度玉门关'</span>, <span class="dt">sep =</span> <span class="st">' '</span>, <span class="dt">method =</span> <span class="st">'tone'</span>)</code></pre></div>
+<pre><code>## [1] &quot;qiang1 di2 he2 xu1 yuan4 yang2 liu3 chun1 feng1 bu2 du4 yu4 men2 guan1&quot;</code></pre>
+<p>不使用声调：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pinyin</span>(<span class="st">'羌笛何须怨杨柳春风不度玉门关'</span>, <span class="dt">sep =</span> <span class="st">' '</span>, <span class="dt">method =</span> <span class="st">'toneless'</span>)</code></pre></div>
+<pre><code>## [1] &quot;qiang di he xu yuan yang liu chun feng bu du yu men guan&quot;</code></pre>
+<p>每个拼音只输出首字母：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pinyin</span>(<span class="st">'羌笛何须怨杨柳春风不度玉门关'</span>, <span class="dt">sep =</span> <span class="st">''</span>, <span class="dt">only_first_letter =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] &quot;qdhxyylcfbdymɡ&quot;</code></pre>
+<p>非汉字或汉语标点的字符保留原型：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pinyin</span>(<span class="st">'羌笛何须怨?杨柳春风,不度玉门关.'</span>, <span class="dt">sep =</span> <span class="st">''</span>, <span class="dt">nonezh_replace =</span> <span class="ot">NULL</span>)</code></pre></div>
+<pre><code>## [1] &quot;qiānɡdíhéxūyuàn?yánɡliǔchūnfēnɡ,búdùyùménɡuān.&quot;</code></pre>
+<p>汉语标点符号会自动转换成对应的英文标点符号：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pinyin</span>(<span class="st">'羌笛何须怨？杨柳春风，不度玉门关。'</span>, <span class="dt">sep =</span> <span class="st">''</span>, <span class="dt">nonezh_replace =</span> <span class="ot">NULL</span>)</code></pre></div>
+<pre><code>## [1] &quot;qiānɡdíhéxūyuàn?yánɡliǔchūnfēnɡ,búdùyùménɡuān.&quot;</code></pre>
+<p>如果自变量是多个字符串的向量，那么只会转换第一个字符串：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pinyin</span>(<span class="kw">c</span>(<span class="st">'羌笛何须怨杨柳'</span>, <span class="st">'春风不度玉门关'</span>))</code></pre></div>
+<pre><code>## [1] &quot;qiānɡ_dí_hé_xū_yuàn_yánɡ_liǔ&quot;</code></pre>
+<p>这怎么行？哎，用 <code>sapply()</code> 嘛：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">c</span>(<span class="st">'羌笛何须怨杨柳'</span>, <span class="st">'春风不度玉门关'</span>), pinyin)</code></pre></div>
+<pre><code>##                 羌笛何须怨杨柳                 春风不度玉门关 
+## &quot;qiānɡ_dí_hé_xū_yuàn_yánɡ_liǔ&quot;  &quot;chūn_fēnɡ_bú_dù_yù_mén_ɡuān&quot;</code></pre>
+</div>
+<div id="pinyin-library--pin-yin-ku" class="section level2">
+<h2>Pinyin library 拼音库 [pīn yīn kù]</h2>
+<p>拼音库我试了好几个，最后选定了<a href="http://bbs.unispim.com/forum.php?mod=viewthread&amp;tid=31644">wangyanhan整理制作的42856字拼音表</a>，直接处理文本文件，简单粗暴，转换起来可能有点慢，会愣一下。如果转换比较大的文本文件，请保持耐心。</p>
+<p>汉字里有很多多音字，转换时请注意。例如，转换<code>春眠不觉晓</code>的结果会让人愣一下，再转换<code>处处闻啼鸟</code>……</p>
+<p>结果好尴尬。</p>
+<p>所以这时请用<code>pinyin()</code>的参数<code>multi = TRUE</code>，这样就把多个读音都列出来，然后请自便。</p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

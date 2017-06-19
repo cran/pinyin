@@ -1,0 +1,14 @@
+6a50613b21079e5266a80e7db37f94a0 *DESCRIPTION
+1305e7a14624730ca93b5947ffe3444d *NAMESPACE
+c864d6194907af55ee0b2e8fa0de0c92 *R/foo.R
+06c6b8199436a1c1a0ac56a240810ff4 *build/vignette.rds
+a0b30d464f6e057ab49d4f913ff66971 *inst/doc/pinyin.R
+f2d6d189b5079eb2b5de96b2ad9b155e *inst/doc/pinyin.Rmd
+f0202d7b23786c644e631bcfc58a0639 *inst/doc/pinyin.html
+385ee732056a34fc7177c464e6861e4e *inst/lib/zh.txt
+f4136d6634b869904ab4d07dfd5d73c0 *man/bookdown2py.Rd
+b2d3eb84eb491f341d7dd241dc4e02c5 *man/file.rename2py.Rd
+1723631256b4b00c808f6a480e9cfafc *man/file2py.Rd
+0359f8d108ab4d35deabda75fa09cc08 *man/pinyin.Rd
+3be9baac327ebe420de7dbcf079321de *man/pylib.Rd
+f2d6d189b5079eb2b5de96b2ad9b155e *vignettes/pinyin.Rmd
