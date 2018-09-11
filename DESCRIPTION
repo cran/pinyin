@@ -1,6 +1,6 @@
 Package: pinyin
-Version: 1.1.0
-Date: 2017-07-18
+Version: 1.1.2
+Date: 2018-09-10
 Title: Convert Chinese Characters into Pinyin
 Author: Peng Zhao
 Maintainer: Peng Zhao <pzhao@pzhao.net>
@@ -11,9 +11,8 @@ Description: Convert Chinese characters into Pinyin (the official romanization s
 License: GPL
 URL: https://github.com/pzhaonet/pinyin
 BugReports: https://github.com/pzhaonet/pinyin/issues
-VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 NeedsCompilation: no
-Packaged: 2017-07-18 18:48:46 UTC; c7701105
+Packaged: 2018-09-11 11:01:15 UTC; PengZhao
 Repository: CRAN
-Date/Publication: 2017-07-18 19:11:47 UTC
+Date/Publication: 2018-09-11 11:20:03 UTC
