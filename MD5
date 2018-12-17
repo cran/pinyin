@@ -1,8 +1,8 @@
-d7eaa93f010c437c5092bd9528195ddf *DESCRIPTION
+a7fcc5347aeb2495dd75158869e609f8 *DESCRIPTION
 4a580d134f7dd2646b0edea6e4415426 *LICENSE
-e0d97235f947da9792891665793a5ea6 *NAMESPACE
+a682bf9c89941bf75b2f1923607082ec *NAMESPACE
 70d937b8a68d72b15805987cd01ec768 *R/internal.R
-588bc58920aeecc115dc92329d0dfac1 *R/py.R
+b4b2e7a24138217f23640774ff4080ae *R/py.R
 ba6413662cc37c37ac0f09de91f07747 *inst/lib/pinyin.txt
 fb331c2e8f0f26b39c38aca60408bdbe *inst/lib/pinyin2.txt
 03a989e933fb720c4bf37185e8bae8b8 *man/bookdown2py.Rd
@@ -10,6 +10,8 @@ fb331c2e8f0f26b39c38aca60408bdbe *inst/lib/pinyin2.txt
 fe389670a2e5678e792c75cc8296809b *man/file2py.Rd
 1c6210b0ef5d1ade2ab13960d1a9aba0 *man/insert.Rd
 8ce2390bfc00feed419b5ae39307c0c0 *man/load_dic.Rd
-73ec5e91ccf5764d8851fc6abcfef32d *man/py.Rd
+6859a2e4b09ef748db4070e12d851de3 *man/pinyin.Rd
+f4201f4d33f21e91076cbb2ee24a02dc *man/py.Rd
+84c7d7bf48f1bd0c9748523d2d9b1381 *man/py_single.Rd
 aca80998dc68416b836aa419fbf2b288 *man/pydic.Rd
 8c32079bd3d1297626876c05d8470baa *man/strsplit2.Rd
